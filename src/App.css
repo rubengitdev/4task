@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 .App {
     width: 100vw;
@@ -7,16 +7,24 @@
     flex-direction: column;
     align-items: center;
     background-color: #2f74c0;
-    font-family: 'Neucha', cursive;
+    font-family: 'Luckiest Guy', cursive;
 }
 
 .heading {
-    text-transform: uppercase;
-    font-size: 40px;
-    margin: 30px 0;
-    color: white;
-    z-index: 1;
+    font-size: 100px;
+    margin: 40px 0;
+    padding-top: 20px;
+    color: #f0f0f0;
     text-align: center;
+    z-index: 1;
+}
+
+.subheading {
+    margin-bottom: 25px;
+    color: #f0f0f0;
+    text-align: center;
+    word-spacing: 6px;
+    z-index: 1;
 }
 
 @media (max-width: 800px) {
