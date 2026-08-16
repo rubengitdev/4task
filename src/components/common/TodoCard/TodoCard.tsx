@@ -50,7 +50,7 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
 
     return (
         <form
-            className="todos__single"
+            className={`todos__single ${todo.isDone ? 'todos__single--done' : ''}`}
             onSubmit={(e) => handleEdit(e, todo.id)}
         >
             <div className="todo__content">
@@ -74,12 +74,10 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
                 )}
             </div>
 
-            <hr className="vertical__divider" />
-
             <div className="icon__container">
                 {/* START EDIT ICON */}
                 <span
-                    className="icon edit__icon"
+                    className="icon edit__icon background"
                     onClick={() => {
                         if (!edit && !todo.isDone) {
                             setEdit(!edit);
@@ -90,18 +88,20 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
                 </span>
                 {/* END EDIT ICON */}
 
-                {/* START DONE ICON */}
+                {/* START COMPLETED ICON */}
                 <span
-                    className="icon done__icon"
+                    className="icon completed__icon background"
                     onClick={() => handleDone(todo.id)}
                 >
                     <MdDone />
                 </span>
-                {/* END DONE ICON */}
+                {/* END COMPLETED ICON */}
+
+                <hr className="divider" />
 
                 {/* START DELETE ICON */}
                 <span
-                    className="icon delete__icon"
+                    className="icon delete__icon background"
                     onClick={() => handleDelete(todo.id)}
                 >
                     <AiFillDelete />
