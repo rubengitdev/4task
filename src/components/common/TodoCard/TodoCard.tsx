@@ -53,20 +53,29 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
             className="todos__single"
             onSubmit={(e) => handleEdit(e, todo.id)}
         >
-            {' '}
-            {edit ? (
-                <input
-                    value={editTodo}
-                    onChange={(e) => setEditTodo(e.target.value)}
-                    className="todos__single--text"
-                    ref={inputRef}
-                />
-            ) : todo.isDone ? (
-                <s className="todos__single--text">{todo.todo}</s>
-            ) : (
-                <span className="todos__single--text">{todo.todo}</span>
-            )}
+            <div className="todo__content">
+                {todo.isDone && (
+                    <span className="todo__success_mark">
+                        <MdDone />
+                    </span>
+                )}
+
+                {edit ? (
+                    <input
+                        value={editTodo}
+                        onChange={(e) => setEditTodo(e.target.value)}
+                        className="todos__single--text"
+                        ref={inputRef}
+                    />
+                ) : todo.isDone ? (
+                    <s className="todos__single--text">{todo.todo}</s>
+                ) : (
+                    <span className="todos__single--text">{todo.todo}</span>
+                )}
+            </div>
+
             <hr className="vertical__divider" />
+
             <div className="icon__container">
                 {/* START EDIT ICON */}
                 <span
