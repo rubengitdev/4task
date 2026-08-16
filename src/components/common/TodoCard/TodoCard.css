@@ -1,0 +1,49 @@
+.todos__single {
+    display: flex;
+    width: 29.5%;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+    background-color: darkorange;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.todos__single--text {
+    flex: 1;
+    min-width: 0;
+    padding: 5px;
+    border: none;
+    font-size: 20px;
+    color: #f0f0f0;
+    overflow-wrap: anywhere;
+}
+
+.todos__single--text:focus {
+    outline: none;
+}
+
+.vertical__divider {
+    width: 1px;
+    height: auto;
+    background-color: #f0f0f0;
+    border: none;
+    margin: 0 20px;
+}
+
+.icon__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    margin-left: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #f0f0f0;
+}
+
+.delete__icon {
+    color: red;
+}

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import InputField from './components/InputField';
+import InputField from './components/common/InputField/InputField';
 import type { Todo } from './types/model';
 import TodoList from './components/TodoList';
 

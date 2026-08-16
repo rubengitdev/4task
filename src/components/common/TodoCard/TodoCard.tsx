@@ -1,0 +1,106 @@
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { MdDone } from 'react-icons/md';
+import type { Todo } from '../../../types/model';
+import './TodoCard.css';
+import { useEffect, useRef, useState } from 'react';
+
+interface TodoCardProps {
+    todo: Todo;
+    todos: Todo[];
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+}
+
+const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
+    const [edit, setEdit] = useState<boolean>(false);
+    const [editTodo, setEditTodo] = useState<string>(todo.todo);
+
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        inputRef.current?.focus();
+    }, [edit]);
+
+    // START FUNCTION HANDLE EDIT
+    const handleEdit = (e: React.SubmitEvent, id: number) => {
+        e.preventDefault();
+        setTodos(
+            todos.map((todo) =>
+                todo.id === id ? { ...todo, todo: editTodo } : todo,
+            ),
+        );
+        setEdit(false);
+    };
+    // END FUNCTION HANDLE EDIT
+
+    // START FUNCTION HANDLE DELETE
+    const handleDelete = (id: number) => {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    };
+    // END FUNCTION HANDLE DELETE
+
+    // START FUNCTION HANDLE DONE
+    const handleDone = (id: number) => {
+        setTodos(
+            todos.map((todo) =>
+                todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
+            ),
+        );
+    };
+    // END FUNCTION HANDLE DONE
+
+    return (
+        <form
+            className="todos__single"
+            onSubmit={(e) => handleEdit(e, todo.id)}
+        >
+            {' '}
+            {edit ? (
+                <input
+                    value={editTodo}
+                    onChange={(e) => setEditTodo(e.target.value)}
+                    className="todos__single--text"
+                    ref={inputRef}
+                />
+            ) : todo.isDone ? (
+                <s className="todos__single--text">{todo.todo}</s>
+            ) : (
+                <span className="todos__single--text">{todo.todo}</span>
+            )}
+            <hr className="vertical__divider" />
+            <div className="icon__container">
+                {/* START EDIT ICON */}
+                <span
+                    className="icon edit__icon"
+                    onClick={() => {
+                        if (!edit && !todo.isDone) {
+                            setEdit(!edit);
+                        }
+                    }}
+                >
+                    <AiFillEdit />
+                </span>
+                {/* END EDIT ICON */}
+
+                {/* START DONE ICON */}
+                <span
+                    className="icon done__icon"
+                    onClick={() => handleDone(todo.id)}
+                >
+                    <MdDone />
+                </span>
+                {/* END DONE ICON */}
+
+                {/* START DELETE ICON */}
+                <span
+                    className="icon delete__icon"
+                    onClick={() => handleDelete(todo.id)}
+                >
+                    <AiFillDelete />
+                </span>
+                {/* END DELETE ICON */}
+            </div>
+        </form>
+    );
+};
+
+export default TodoCard;
