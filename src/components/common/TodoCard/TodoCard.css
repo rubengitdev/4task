@@ -1,4 +1,4 @@
-.todos__single {
+.todo__card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@
     transition: background 0.3s;
 }
 
-.todos__single--done {
+.todo__card--done {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,6 +48,7 @@
     color: #f0f0f0;
     overflow-wrap: anywhere;
     word-spacing: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .todos__single--text:focus {
@@ -91,4 +92,10 @@
     min-width: 0;
     flex: 1;
     align-items: center;
+}
+
+.icon--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
 }

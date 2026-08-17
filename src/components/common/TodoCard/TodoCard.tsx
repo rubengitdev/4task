@@ -34,12 +34,20 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
 
     // START FUNCTION HANDLE DELETE
     const handleDelete = (id: number) => {
+        if (edit) {
+            return;
+        }
+
         setTodos(todos.filter((todo) => todo.id !== id));
     };
     // END FUNCTION HANDLE DELETE
 
     // START FUNCTION HANDLE DONE
     const handleDone = (id: number) => {
+        if (edit) {
+            return;
+        }
+
         setTodos(
             todos.map((todo) =>
                 todo.id === id ? { ...todo, isDone: !todo.isDone } : todo,
@@ -50,7 +58,7 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
 
     return (
         <form
-            className={`todos__single ${todo.isDone ? 'todos__single--done' : ''}`}
+            className={`todo__card ${todo.isDone ? 'todo__card--done' : ''}`}
             onSubmit={(e) => handleEdit(e, todo.id)}
         >
             <div className="todo__content">
@@ -90,7 +98,7 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
 
                 {/* START COMPLETED ICON */}
                 <span
-                    className="icon completed__icon background"
+                    className={`icon completed__icon background ${edit ? 'icon--disabled' : ''}`}
                     onClick={() => handleDone(todo.id)}
                 >
                     <MdDone />
@@ -101,7 +109,7 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
 
                 {/* START DELETE ICON */}
                 <span
-                    className="icon delete__icon background"
+                    className={`icon delete__icon background ${edit ? 'icon--disabled' : ''}`}
                     onClick={() => handleDelete(todo.id)}
                 >
                     <AiFillDelete />
