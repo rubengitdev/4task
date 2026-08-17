@@ -21,9 +21,9 @@ const App = () => {
 
     return (
         <div className="App">
-            <span className="heading">4Task</span>
+            <span className="heading">4Task!</span>
             <span className="subheading">
-                Finish your tasks or you can't pay your bills!
+                Prove you can finish what you started!
             </span>
 
             {/* START COMPONENT InputField */}
