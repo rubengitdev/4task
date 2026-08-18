@@ -91,9 +91,25 @@
     z-index: 1;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 992px) {
     .heading {
+        margin-bottom: 20px;
+        font-size: 80px;
+    }
+
+    .subheading {
+        margin: 20px 0;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 576) {
+    .heading {
+        font-size: 36px;
+    }
+
+    .subheading {
         margin: 15px 0;
-        font-size: 35px;
+        font-size: 16px;
     }
 }
