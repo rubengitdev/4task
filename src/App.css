@@ -47,16 +47,19 @@
         #159ee8 50%,
         #3b82f6 100%
     );
+    --button-primary-hover: ;
 
     /* Card */
-    --card-todo: #fea319;
+    --todo-card-background: #f0f0f0;
+    --card-todo: #f0f0f0;
     --card-completed: #22c55e;
 
     /* Icon */
-    --icon-background: #f18914;
-    --icon-hover: #bfdbfe;
+    --icon-background: #6395ee;
+    --icon-completed: #22c55e;
 
-    --text-primary: ;
+    /* Text */
+    --text-primary: #3d3d3d;
 }
 
 .App {
