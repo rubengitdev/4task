@@ -72,20 +72,20 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
                     <input
                         value={editTodo}
                         onChange={(e) => setEditTodo(e.target.value)}
-                        className="todos__single--text"
+                        className="todo__card--text"
                         ref={inputRef}
                     />
                 ) : todo.isDone ? (
-                    <s className="todos__single--text">{todo.todo}</s>
+                    <s className="todo__card--text">{todo.todo}</s>
                 ) : (
-                    <span className="todos__single--text">{todo.todo}</span>
+                    <span className="todo__card--text">{todo.todo}</span>
                 )}
             </div>
 
             <div className="icon__container">
                 {/* START EDIT ICON */}
                 <span
-                    className="icon edit__icon background"
+                    className={`icon edit__icon ${todo.isDone ? 'icon__background--done' : ''}`}
                     onClick={() => {
                         if (!edit && !todo.isDone) {
                             setEdit(!edit);
@@ -98,7 +98,7 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
 
                 {/* START COMPLETED ICON */}
                 <span
-                    className={`icon completed__icon background ${edit ? 'icon--disabled' : ''}`}
+                    className={`icon completed__icon ${edit ? 'icon--disabled' : todo.isDone ? 'icon__background--done' : ''}`}
                     onClick={() => handleDone(todo.id)}
                 >
                     <MdDone />
@@ -109,7 +109,7 @@ const TodoCard = ({ todo, todos, setTodos }: TodoCardProps) => {
 
                 {/* START DELETE ICON */}
                 <span
-                    className={`icon delete__icon background ${edit ? 'icon--disabled' : ''}`}
+                    className={`icon delete__icon ${edit ? 'icon--disabled' : todo.isDone ? 'icon__background--done' : ''}`}
                     onClick={() => handleDelete(todo.id)}
                 >
                     <AiFillDelete />
