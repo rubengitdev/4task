@@ -18,6 +18,10 @@
     color: black;
 }
 
+.input__box:focus::placeholder {
+    color: transparent;
+}
+
 ::placeholder {
     color: gray;
 }
